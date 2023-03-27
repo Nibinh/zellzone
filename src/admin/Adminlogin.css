@@ -1,0 +1,15 @@
+
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.boxd{
+    width: 400px;
+    height: 450px;
+    background-color: rgb(225, 205, 205);
+    border-radius: 30px;
+    box-shadow: 12px 12px 20px rgb(119, 129, 119);
+    overflow-x: hidden;
+    
+}

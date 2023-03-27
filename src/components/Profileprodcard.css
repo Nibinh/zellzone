@@ -1,0 +1,14 @@
+
+
+  .card{
+    transition: 1s;
+    border-radius: 30px;
+  }
+  .card:hover{
+    box-shadow: 12px 12px 22px gray;
+    transition: 1s;
+    transform: scale(0.9);
+  }
+  .cardimg{
+    overflow: hidden;
+  }

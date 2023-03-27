@@ -1,38 +1,54 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap');
+.headfont{
+  font-family: 'Cormorant Garamond', serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+.headDisplay{
+  font-family: 'Lobster', cursive;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+.headDisplaypara{
+  font-family: 'Satisfy', cursive;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Rashi+Hebrew:wght@600&display=swap');
+.profilefont{
+  font-family: 'Noto Rashi Hebrew', serif;
 }
 
-.App-link {
-  color: #61dafb;
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+.addprodheading{
+  font-family: 'PT Serif', serif;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+.proddisname{
+  font-family: 'Roboto Slab', serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&display=swap');
+.produnctsfont{
+  font-family: 'IBM Plex Serif', serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+.adminprodfont{
+  font-family: 'Roboto Slab', serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+.noitemsmsg{
+  font-family: 'Roboto Slab', serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+.textfonts{
+  font-family: 'Varela Round', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap');
+.headertextstyle{
+  font-family: 'Noto Nastaliq Urdu', serif;
 }

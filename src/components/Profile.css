@@ -1,0 +1,23 @@
+.pici{
+    width: 322px;
+    height: 306px;
+    border-radius: 50%;
+    transition: 1s;
+ 
+}
+.pici:hover{
+    box-shadow: 12px 12px 22px gray;
+    transition: 1s;
+    transform: scale(0.9);
+}
+
+.picname{
+margin-left: 60px;
+}
+.picnamef{
+    background-color: rgb(86, 75, 87);
+    color: antiquewhite;
+    width: 270px;
+    height: 45px;
+    border-radius: 30px;
+}
