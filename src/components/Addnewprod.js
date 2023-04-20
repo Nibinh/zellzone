@@ -28,7 +28,25 @@ function Addnewprod() {
       setId(uuid().slice(0,3))
     }, [])
 
-    const {register,handleSubmit,formState:{errors}}=useForm()
+  const { register, handleSubmit, formState: { errors } } = useForm()
+  
+  const postDetails = (pics) => {
+    const data = new FormData()
+    data.append("file", pics)
+    data.append("upload_preset", "zellzoneproducts")
+    data.append("cloud_name", "dabqlnwgo")
+    fetch("https://api.cloudinary.com/v1_1/dabqlnwgo/image/upload", {
+      method: 'post',
+      body:data,
+    }).then((res) => res.json())
+      .then((data) => {
+      setProdimage(data.url.toString())
+      })
+      .catch((err) => {
+      console.log(err);
+    })
+  }
+
     
     const formSubmit=async(data)=>{
         // console.log(prodName)
@@ -105,7 +123,7 @@ function Addnewprod() {
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Image</Form.Label>
-            <Form.Control type="text" {...register("prodImage",{value:prodImage,required:true,onChange:(e)=>setProdimage(e.target.value)})} />
+            <Form.Control type="file" {...register("prodImage",{value:prodImage,required:true,onChange:(e)=>postDetails(e.target.files[0])})} />
             {errors.prodImage && errors.prodImage.type === "required" && <span className='text-danger'>Image is required</span>}
           </Form.Group>
 

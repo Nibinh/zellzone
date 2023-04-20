@@ -23,15 +23,31 @@ function Edit() {
 
   const fetchdata=async()=>{
     const result=await axios.get('http://localhost:8000/prouserdetail/'+params.eml)
-   console.log(result.data.details)
 
    setEmail(result.data.details.email)
    setName(result.data.details.name)
    setPhonenumber(result.data.details.phonenumber)
    setPassword(result.data.details.password)
    setAdress(result.data.details.adress)
-   setImage(result.data.details.image)
-   }
+  
+  }
+  
+   const postDetails = (pics) => {
+    const data = new FormData()
+    data.append("file", pics)
+    data.append("upload_preset", "zellzone")
+    data.append("cloud_name", "dabqlnwgo")
+    fetch("https://api.cloudinary.com/v1_1/dabqlnwgo/image/upload", {
+      method: 'post',
+      body:data,
+    }).then((res) => res.json())
+      .then((data) => {
+      setImage(data.url.toString())
+      })
+      .catch((err) => {
+      console.log(err);
+    })
+  }
 
    const formSubmit=async(data)=>{
     const body={
@@ -42,7 +58,7 @@ function Edit() {
       adress,
       image
     }
-
+console.log(body);
     const result=await axios.post('http://localhost:8000/editing',body)
     alert(result.data.message)
     location('/profile/'+email)
@@ -95,7 +111,7 @@ useEffect(() => {
 
       <Form.Group className="mb-3 brd" controlId="formBasicPassword">
         <Form.Label>image</Form.Label>
-         <Form.Control  type="text" {...register("image",{value:image,required:true,onChange:(e)=>setImage(e.target.value)})}   placeholder="Name" value={image}/>
+         <Form.Control  type="file" {...register("image",{value:image,required:true,onChange:(e)=>postDetails(e.target.files[0])})}   placeholder="Name" />
          {errors.password && errors.password.type==="required" && <span className='text-danger'>Image is required</span>}
       </Form.Group>
      

@@ -19,7 +19,24 @@ function Register() {
 
   const {register, handleSubmit,formState:{errors}}=useForm()
 
-  const location=useNavigate()
+  const location = useNavigate()
+  
+  const postDetails = (pics) => {
+    const data = new FormData()
+    data.append("file", pics)
+    data.append("upload_preset", "zellzone")
+    data.append("cloud_name", "dabqlnwgo")
+    fetch("https://api.cloudinary.com/v1_1/dabqlnwgo/image/upload", {
+      method: 'post',
+      body:data,
+    }).then((res) => res.json())
+      .then((data) => {
+      setImage(data.url.toString())
+      })
+      .catch((err) => {
+      console.log(err);
+    })
+  }
 
 
   const formSubmit=async(data)=>{
@@ -33,33 +50,28 @@ function Register() {
       image
     }
 
+    console.log(body);
+
     const result=await axios.post('http://localhost:8000/register',body)
    
     .then(response => {
-      // handle successful response
+     
      alert(response.data.message)
      location('/login')
     
     })
     .catch(error => {
       if (error.response) {
-        // handle error response with status code outside 200-299 range
+
         alert(error.response.data.message);
         window.location.reload()
-      
-       
-        // console.log(error.response.status);
-        // console.log(error.response.headers);
       } 
       else if (error.request) {
-        // handle error when no response was received
         console.log(error.request);
       } else {
-        // handle any other error
         console.log('Error', error.message);
       }
     })
-    // alert(result.data.message) 
   }
  
   return (
@@ -116,7 +128,7 @@ function Register() {
 
       <Form.Group className="mb-3 brd" controlId="formBasicPassword">
         <Form.Label>Image</Form.Label>
-         <Form.Control  type="text" {...register("image",{value:image,required:true,onChange:(e)=>setImage(e.target.value)})}  placeholder="Name" />
+         <Form.Control  type="file" {...register("image",{value:image,required:true,onChange:(e)=>postDetails(e.target.files[0])})}    />
          {errors.image && errors.image.type==="required" && <span className='text-danger'>image is required</span>}
       </Form.Group>
      
