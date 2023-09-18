@@ -11,7 +11,7 @@ function Reqprod() {
   const [searchitem, setSearchitem] = useState("");
   const [user, setUser] = useState("");
   const [allproducts, setAllproducts] = useState([]);
-  const [name, setName] = useState();
+  const [refresh, setRefresh] = useState();
 
   const fetchdata = async () => {
     const result = await axios
@@ -26,9 +26,15 @@ function Reqprod() {
   };
 
   const dltprod = async (id) => {
-    const result = await axios.delete("http://localhost:8000/deleteitem/" + id);
-    console.log(result);
-    fetchdata();
+    const result = await axios
+      .delete("http://localhost:8000/admin/admindeleteproduct/" + id)
+      .then((response) => {
+        console.log(response);
+        setRefresh(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   useEffect(() => {
@@ -36,7 +42,7 @@ function Reqprod() {
       setUser(localStorage.getItem("usern"));
     }
     fetchdata();
-  }, []);
+  }, [refresh]);
   console.log(user);
   return (
     <div>

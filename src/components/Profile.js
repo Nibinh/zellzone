@@ -35,11 +35,19 @@ function Profile() {
     fetchdata();
   }, []);
 
-  const logout = () => {
-    if (localStorage.getItem("email")) {
-      localStorage.removeItem("email");
-      location("/");
-    }
+  const logout = async () => {
+    const log = await axios
+      .post("http://localhost:8000/auth/logout")
+      .then((response) => {
+        console.log(response);
+        if (localStorage.getItem("email")) {
+          localStorage.removeItem("email");
+        }
+        location("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (

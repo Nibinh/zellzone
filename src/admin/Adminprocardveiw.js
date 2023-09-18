@@ -15,7 +15,7 @@ const Adminprocardveiw = () => {
 
   const fetchdata = async () => {
     const result = await axios
-      .get("http://localhost:8000/product/veiwproduct/" + params.id)
+      .get("http://localhost:8000/admin/adminveiwproduct/" + params.id)
       .then((response) => {
         setProdetail(response.data);
       })
