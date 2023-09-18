@@ -1,12 +1,12 @@
 import React from "react";
-import "./Profileprodcard.css";
+import "../components/Profileprodcard.css";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 
-function Profileprodcard({ products }) {
+const AdminProfileprocard = ({ products }) => {
   return (
     <Link
-      to={`/profileprodcardview/${products._id}`}
+      to={`/adminprocardveiw/${products._id}`}
       style={{ textDecoration: "none", color: "black" }}
     >
       <Card className="card" style={{ width: "18rem" }}>
@@ -26,6 +26,6 @@ function Profileprodcard({ products }) {
       </Card>
     </Link>
   );
-}
+};
 
-export default Profileprodcard;
+export default AdminProfileprocard;

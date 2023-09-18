@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import "./Profileprodcardview.css";
-import Headertwo from "./Headertwo";
+import "../components/Profileprodcardview.css";
+import Headertwo from "../components/Headertwo";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 
-function Profileprodcardview() {
+const Adminprocardveiw = () => {
   const params = useParams();
   const [prodetail, setProdetail] = useState([]);
 
@@ -24,22 +24,21 @@ function Profileprodcardview() {
       });
   };
 
-  const delprod = async (id) => {
-    const deletedata = await axios
-      .delete("http://localhost:8000/product/deleteproduct/" + id)
-      .then((response) => {
-        alert("Product is removed");
-        console.log(response);
-        location("/profile/" + prodetail.sellerId.email);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  // const delprod = async (id) => {
+  //   const deletedata = await axios
+  //     .delete("http://localhost:8000/product/deleteproduct/" + id)
+  //     .then((response) => {
+  //       alert("Product is removed");
+  //       console.log(response);
+  //       location("/profile/" + prodetail.sellerId.email);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
   useEffect(() => {
     fetchdata();
   }, []);
-
   return (
     <div>
       <Headertwo />
@@ -59,13 +58,13 @@ function Profileprodcardview() {
                   <span>{prodetail.productAge} used</span>
                   <h4>₹{prodetail.price}</h4>
 
-                  <Button
+                  {/* <Button
                     onClick={() => delprod(prodetail._id)}
                     variant="secondary"
                     className="ms-2 mt-1"
                   >
                     <i class="fa-solid text-dark fa-trash"></i>
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
             </Col>
@@ -75,6 +74,6 @@ function Profileprodcardview() {
       </Container>
     </div>
   );
-}
+};
 
-export default Profileprodcardview;
+export default Adminprocardveiw;

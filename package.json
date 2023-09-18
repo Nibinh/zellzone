@@ -13,6 +13,7 @@
     "react-bootstrap": "^2.7.2",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.5",
+    "react-lazy-load": "^4.0.1",
     "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",
     "react-uuid": "^2.0.0",

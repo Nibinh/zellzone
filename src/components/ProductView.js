@@ -1,28 +1,34 @@
-import React from 'react'
-import './ProductView.css'
-import { Link } from 'react-router-dom';
-import Card from 'react-bootstrap/Card';
+import React from "react";
+import "./ProductView.css";
+import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
 
-function ProductView({produc}) {
-   
+function ProductView({ produc }) {
   return (
-  <Link to={`/homeprodview/${produc.Id}`} style={{ textDecoration:'none', color:'black' }}>
-      <Card className='card animate__animated animate__fadeInUp'  style={{ width: '18rem' }}>
-      <Card.Img className='p-5 cardimg' style={{ width:'300px',height:'300px'}} variant="top" src={produc.image}/>
-      <Card.Body style={{backgroundColor:"grey"}}>
-        <Card.Title> {produc.name}</Card.Title>
-        <Card.Text>
-        <p>{produc.type}</p>    </Card.Text>
-        <Card.Text>
-        ₹ {produc.price}
-        </Card.Text>
-       
-      </Card.Body>
-    </Card>
+    <Link
+      to={`/homeprodview/${produc._id}`}
+      style={{ textDecoration: "none", color: "black" }}
+    >
+      <Card
+        className="card animate__animated animate__fadeInUp"
+        style={{ width: "18rem" }}
+      >
+        <Card.Img
+          className="p-5 cardimg"
+          style={{ width: "300px", height: "300px" }}
+          variant="top"
+          src={produc.imageUrl}
+        />
 
-  </Link>
-
-
+        <Card.Body style={{ backgroundColor: "grey" }}>
+          <Card.Title> {produc.productName}</Card.Title>
+          <Card.Text>
+            <p>{produc.type}</p>{" "}
+          </Card.Text>
+          <Card.Text>₹ {produc.price}</Card.Text>
+        </Card.Body>
+      </Card>
+    </Link>
 
     // <div class="container">
     //   <div class="box">
@@ -42,7 +48,7 @@ function ProductView({produc}) {
     //     </div>
     //   </div>
     //   </div>
-  )
+  );
 }
 
-export default ProductView
+export default ProductView;
