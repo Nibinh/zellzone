@@ -5,7 +5,8 @@ import { Row, Col, Alert } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../axios";
 import { useNavigate } from "react-router-dom";
 
 function Register() {
@@ -54,7 +55,7 @@ function Register() {
     formData.append("address", adress);
 
     const result = await axios
-      .post("http://localhost:8000/auth/register", formData, {
+      .post("/auth/register", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

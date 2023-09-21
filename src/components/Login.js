@@ -7,7 +7,10 @@ import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../axios";
+
+axios.defaults.withCredentials = true;
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -31,7 +34,7 @@ function Login() {
     };
 
     const result = await axios
-      .post("http://localhost:8000/auth/login", body)
+      .post("/auth/login", body)
       .then((response) => {
         console.log(response.data);
         localStorage.setItem("email", response.data.email);

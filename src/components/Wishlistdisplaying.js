@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./Wishlistdisplaying.css";
 import Headertwo from "./Headertwo";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../axios";
 import { Container, Row, Col } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
@@ -21,7 +22,7 @@ function Wishlistdisplaying() {
 
   const fetchdata = async () => {
     const result = await axios
-      .get("http://localhost:8000/wishlist/gettingall/" + params.id)
+      .get("/wishlist/gettingall/" + params.id)
       .then((response) => {
         setWish(response.data);
         setLoading(false);

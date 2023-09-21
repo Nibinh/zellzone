@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./Profileprodcardview.css";
 import Headertwo from "./Headertwo";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../axios";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
@@ -15,7 +16,7 @@ function Profileprodcardview() {
 
   const fetchdata = async () => {
     const result = await axios
-      .get("http://localhost:8000/product/veiwproduct/" + params.id)
+      .get("/product/veiwproduct/" + params.id)
       .then((response) => {
         setProdetail(response.data);
       })
@@ -26,7 +27,7 @@ function Profileprodcardview() {
 
   const delprod = async (id) => {
     const deletedata = await axios
-      .delete("http://localhost:8000/product/deleteproduct/" + id)
+      .delete("/product/deleteproduct/" + id)
       .then((response) => {
         alert("Product is removed");
         console.log(response);

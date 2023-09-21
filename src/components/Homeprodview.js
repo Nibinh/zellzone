@@ -5,10 +5,10 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { Alert, Button } from "react-bootstrap";
 import Sellerdetails from "./Sellerdetails";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../axios";
 import LoadingSpinner from "./LoadingSpinner";
 
-axios.defaults.withCredentials = true;
 function Homeprodview() {
   const params = useParams();
   const [prodetail, setProdetail] = useState([]);
@@ -24,7 +24,7 @@ function Homeprodview() {
 
   const fetchdata = async () => {
     const data = await axios
-      .get("http://localhost:8000/product/veiwproduct/" + params.id)
+      .get("/product/veiwproduct/" + params.id)
       .then((response) => {
         console.log(response.data);
         setProdetail(response.data);
@@ -48,9 +48,7 @@ function Homeprodview() {
 
   const addToWishlist = async () => {
     const result = await axios
-      .get(
-        `http://localhost:8000/wishlist/addtowishlist/${userId}/${params.id}`
-      )
+      .get(`/wishlist/addtowishlist/${userId}/${params.id}`)
       .then((response) => {
         console.log(response);
         setMessage(response.data);

@@ -4,8 +4,9 @@ import Headeradmin from "./Headeradmin";
 import { Container, Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import axios from "../axios";
 
 function AdminProdinfo() {
   const params = useParams();
@@ -23,7 +24,7 @@ function AdminProdinfo() {
 
   const fetchdata = async () => {
     const result = await axios
-      .get("http://localhost:8000/admin/adminveiwproduct/" + params.id)
+      .get("/admin/adminveiwproduct/" + params.id)
       .then((response) => {
         setProd(response.data);
         setUseremail(response.data.email);
@@ -35,7 +36,7 @@ function AdminProdinfo() {
 
   const acptitem = async (id) => {
     const result = await axios
-      .get("http://localhost:8000/admin/activatingproduct/" + id)
+      .get("/admin/activatingproduct/" + id)
       .then((response) => {
         console.log(response);
         location("/reqprod");

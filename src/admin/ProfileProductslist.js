@@ -3,9 +3,10 @@ import Headeradmin from "./Headeradmin";
 import { Container, Row, Col } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-import axios from "axios";
+// import axios from "axios";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
+import axios from "../axios";
 
 function ProfileProductslist() {
   const [searchitem, setSearchitem] = useState("");
@@ -14,7 +15,7 @@ function ProfileProductslist() {
 
   const fetchdata = async () => {
     const result = await axios
-      .get("http://localhost:8000/product/allproducts")
+      .get("/product/allproducts")
       .then((response) => {
         setProduct(response.data);
       })

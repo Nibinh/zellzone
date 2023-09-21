@@ -4,7 +4,8 @@ import { Row, Col } from "react-bootstrap";
 import "animate.css";
 import ProductView from "./ProductView";
 import Header from "../Header";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../axios";
 import Form from "react-bootstrap/Form";
 
 function Home() {
@@ -12,13 +13,9 @@ function Home() {
   const [products, setProducts] = useState([]);
   const [searchitem, setSearchitem] = useState("");
 
-  console.log(searchitem);
-
   const fetchdata = async () => {
-    const { data } = await axios.get(
-      "http://localhost:8000/product/allproducts"
-    );
-    console.log(data);
+    const { data } = await axios.get("/product/allproducts");
+
     setProducts(data);
   };
 

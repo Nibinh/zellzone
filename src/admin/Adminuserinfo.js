@@ -3,7 +3,8 @@ import "./Adminuserinfo.css";
 import { Container, Row, Col } from "react-bootstrap";
 import Headeradmin from "./Headeradmin";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../axios";
 // import Profileprodcard from "../components/Profileprodcard";
 import AdminProfileprocard from "./AdminProfileprocard";
 
@@ -14,7 +15,7 @@ function Adminuserinfo() {
 
   const fetchdata = async () => {
     const result = await axios
-      .get("http://localhost:8000/admin/getauser/" + params.eml)
+      .get("/admin/getauser/" + params.eml)
       .then((response) => {
         console.log(response);
         setUser(response.data);

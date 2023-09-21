@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../axios";
 import { useNavigate } from "react-router-dom";
 
 function Wishlistdltbutton({ idnumber, email }) {
@@ -9,7 +10,7 @@ function Wishlistdltbutton({ idnumber, email }) {
   //   console.log(idnumber);
   const dltprod = async () => {
     const result = await axios
-      .get("http://localhost:8000/wishlist/removing/" + email + "/" + idnumber)
+      .get("/wishlist/removing/" + email + "/" + idnumber)
       .then((response) => {
         console.log(response);
       })

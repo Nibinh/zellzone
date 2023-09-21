@@ -5,7 +5,8 @@ import "./Adminhome.css";
 import { Container, Row, Col } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../axios";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 
@@ -17,7 +18,7 @@ function Adminhome() {
 
   const fetchdata = async () => {
     const result = await axios
-      .get("http://localhost:8000/user/getallusers")
+      .get("/user/getallusers")
       .then((response) => {
         console.log(response);
         setAllusers(response.data);
@@ -29,7 +30,7 @@ function Adminhome() {
 
   const deluser = async (id) => {
     const result = await axios
-      .delete("http://localhost:8000/admin/deleteuser/" + id)
+      .delete("/admin/deleteuser/" + id)
       .then((response) => {
         console.log(response);
         setDel(response);

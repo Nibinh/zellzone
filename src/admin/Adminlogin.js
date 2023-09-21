@@ -6,7 +6,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../axios";
 
 function Adminlogin() {
   const [email, setEmail] = useState("");
@@ -28,7 +29,7 @@ function Adminlogin() {
       password,
     };
     const result = await axios
-      .post("http://localhost:8000/admin/login", body)
+      .post("/admin/login", body)
       .then((response) => {
         console.log(response);
         // setValid(response.data.usern);

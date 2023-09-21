@@ -7,7 +7,8 @@ import "./Addnewprod.css";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import uuid from "react-uuid";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../axios";
 
 function Addnewprod() {
   const [prodName, setProdname] = useState("");
@@ -65,7 +66,7 @@ function Addnewprod() {
     });
 
     const result = await axios
-      .post("http://localhost:8000/product/addproduct", formData, {
+      .post("/product/addproduct", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

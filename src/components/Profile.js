@@ -6,7 +6,8 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Profileprodcard from "./Profileprodcard";
 import { Link } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../axios";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import LoadingSpinner from "./LoadingSpinner";
@@ -21,7 +22,7 @@ function Profile() {
 
   const fetchdata = async () => {
     const result = await axios
-      .get("http://localhost:8000/user/getUser/" + params.email)
+      .get("/user/getUser/" + params.email)
       .then((response) => {
         setUser(response.data);
         setSell(response.data.soldProducts);
@@ -41,7 +42,7 @@ function Profile() {
 
   const logout = async () => {
     const log = await axios
-      .post("http://localhost:8000/auth/logout")
+      .post("/auth/logout")
       .then((response) => {
         console.log(response);
         if (localStorage.getItem("email")) {

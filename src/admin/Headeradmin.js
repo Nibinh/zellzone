@@ -6,14 +6,15 @@ import { Link } from "react-router-dom";
 import "./Headeradmin.css";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../axios";
 
 function Headeradmin() {
   const location = useNavigate();
 
   const logout = async () => {
     const loGout = await axios
-      .post("http://localhost:8000/admin/logout")
+      .post("/admin/logout")
       .then((response) => {
         console.log(response);
         if (localStorage.getItem("usern")) {

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Collapse from "react-bootstrap/Collapse";
-import axios from "axios";
 
 function Sellerdetailsinadmin({ eml, ph, address }) {
   const [open, setOpen] = useState(false);

@@ -3,7 +3,8 @@ import Headeradmin from "./Headeradmin";
 import { Container, Row, Col } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../axios";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 
@@ -15,7 +16,7 @@ function Reqprod() {
 
   const fetchdata = async () => {
     const result = await axios
-      .get("http://localhost:8000/admin/getnonactiveprod")
+      .get("/admin/getnonactiveprod")
       .then((response) => {
         console.log(response.data);
         setAllproducts(response.data);
@@ -27,7 +28,7 @@ function Reqprod() {
 
   const dltprod = async (id) => {
     const result = await axios
-      .delete("http://localhost:8000/admin/admindeleteproduct/" + id)
+      .delete("/admin/admindeleteproduct/" + id)
       .then((response) => {
         console.log(response);
         setRefresh(response);

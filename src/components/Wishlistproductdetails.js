@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Headertwo from "./Headertwo";
 import { Container, Row, Col } from "react-bootstrap";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../axios";
 import Sellerdetails from "./Sellerdetails";
 import Button from "react-bootstrap";
 import LoadingSpinner from "./LoadingSpinner";
@@ -17,7 +18,7 @@ function Wishlistproductdetails() {
 
   const fetchdata = async () => {
     const result = await axios
-      .get("http://localhost:8000/product/veiwproduct/" + params.id)
+      .get("/product/veiwproduct/" + params.id)
       .then((response) => {
         setProdetail(response.data);
         setSellerEmail(response.data.sellerId.email);

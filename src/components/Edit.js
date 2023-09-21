@@ -3,7 +3,8 @@ import Headertwo from "./Headertwo";
 import { Button, Alert } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../axios";
 import { useNavigate } from "react-router-dom";
 import "./Edit.css";
 import { useParams } from "react-router-dom";
@@ -32,7 +33,7 @@ function Edit() {
 
   const fetchdata = async () => {
     const result = await axios
-      .get("http://localhost:8000/user/getUser/" + params.email)
+      .get("/user/getUser/" + params.email)
       .then((response) => {
         setId(response.data._id);
         setEmail(response.data.email);
@@ -55,7 +56,7 @@ function Edit() {
     formData.append("image", image);
 
     const result = await axios
-      .put("http://localhost:8000/user/edituser/" + id, formData, {
+      .put("/user/edituser/" + id, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

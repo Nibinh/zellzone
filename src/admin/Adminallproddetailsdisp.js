@@ -5,8 +5,8 @@ import { useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Sellerdetailsinadmin from "./Sellerdetailsinadmin";
 import { useNavigate } from "react-router-dom";
-
-import axios from "axios";
+// import axios from "axios";
+import axios from "../axios";
 
 function Adminallproddetailsdisp() {
   const params = useParams();
@@ -18,7 +18,7 @@ function Adminallproddetailsdisp() {
 
   const fetchdata = async () => {
     const result = await axios
-      .get("http://localhost:8000/admin/adminveiwproduct/" + params.id)
+      .get("/admin/adminveiwproduct/" + params.id)
       .then((response) => {
         console.log(response.data);
         setProdetail(response.data);
