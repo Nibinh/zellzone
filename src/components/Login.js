@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Headertwo from "./Headertwo";
 import "./Login.css";
 import { Container, Row, Col } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
+import { Button, Alert } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -14,6 +14,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [errdisp, setErrdisp] = useState();
   const [eremail, setEremail] = useState();
+  const [alert, SetAlert] = useState(false);
 
   const location = useNavigate();
 
@@ -32,10 +33,13 @@ function Login() {
     const result = await axios
       .post("http://localhost:8000/auth/login", body)
       .then((response) => {
-        alert(response.data.message);
         console.log(response.data);
         localStorage.setItem("email", response.data.email);
-        location("/");
+        SetAlert(true);
+        setTimeout(() => {
+          SetAlert(false);
+          location("/");
+        }, 1800);
       })
       .catch((error) => {
         console.log(error.response);
@@ -51,6 +55,14 @@ function Login() {
   return (
     <div>
       <Headertwo />
+
+      {alert && (
+        <div className="text-center">
+          <Button variant="green">
+            <Alert variant="success">Login Successfull</Alert>
+          </Button>
+        </div>
+      )}
 
       <Container className="mt-2 mb-5 p-5 animate__animated  animate__fadeIn animate__delay-0.5s">
         <Form className="rrow mt-5 mb-3 " onSubmit={handleSubmit(onSubmit)}>

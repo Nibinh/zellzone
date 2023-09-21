@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Headertwo from "./Headertwo";
 import { Row, Col, Container } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
+import { Button, Alert } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import "./Addnewprod.css";
 import { Link } from "react-router-dom";
@@ -18,6 +18,7 @@ function Addnewprod() {
   const [prodDesc, setProddesc] = useState("");
   const [prodImage, setProdimage] = useState("");
   const [useremail, setUseremail] = useState("");
+  const [alert, setAlert] = useState(false);
   // const[email,setAdmemail]=useState("admin@gmail.com")
 
   useEffect(() => {
@@ -48,7 +49,7 @@ function Addnewprod() {
   //     console.log(err);
   //   })
   // }
-
+  console.log("aleert", alert);
   const formSubmit = async (data) => {
     const formData = new FormData();
     formData.append("productName", prodName);
@@ -71,18 +72,35 @@ function Addnewprod() {
       })
       .then((response) => {
         console.log(response);
-        alert(
-          "Got your request, Kindly wait for few minutes our team will verify your product and will Upload it shortly"
-        );
-        window.location.reload();
+        setAlert(true);
+        setTimeout(() => {
+          setAlert(false);
+          window.location.reload();
+        }, 9000);
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
+  const alertBtn = () => {
+    setAlert(false);
+    window.location.reload();
+  };
   return (
     <div>
       <Headertwo />
+
+      {alert && (
+        <div className="text-center">
+          <Button variant="green" onClick={() => alertBtn()}>
+            <Alert variant="success">
+              Got your request, Kindly wait for few minutes our team will verify
+              your product and will Upload it shortly
+            </Alert>
+          </Button>
+        </div>
+      )}
 
       <div className="mt-5 mb-5">
         <h1 className="text-center addprodheading">Add new Product to Sell</h1>

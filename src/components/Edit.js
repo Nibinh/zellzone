@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Headertwo from "./Headertwo";
-import Button from "react-bootstrap/Button";
+import { Button, Alert } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -27,6 +27,8 @@ function Edit() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [adress, setAdress] = useState("");
   const [image, setImage] = useState("");
+  const [alert, setAlert] = useState(false);
+  const [alerMsg, setAlerMsg] = useState("");
 
   const fetchdata = async () => {
     const result = await axios
@@ -59,8 +61,11 @@ function Edit() {
         },
       })
       .then((response) => {
-        alert(response.data.message);
-        location("/profile/" + email);
+        setAlert(true);
+        setAlerMsg(response.data.message);
+        setTimeout(() => {
+          location("/profile/" + email);
+        }, 4000);
       })
       .catch((error) => {
         console.log(error);
@@ -74,6 +79,15 @@ function Edit() {
   return (
     <div>
       <Headertwo />
+
+      {alert && (
+        <div className="text-center">
+          <Button variant="green">
+            <Alert variant="success">{alerMsg}</Alert>
+          </Button>
+        </div>
+      )}
+
       <div className="editfirstdiv mt-5 mb-5">
         <div className="ff">
           <div className="mt-5">

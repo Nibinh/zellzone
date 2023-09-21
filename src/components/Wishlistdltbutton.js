@@ -12,7 +12,6 @@ function Wishlistdltbutton({ idnumber, email }) {
       .get("http://localhost:8000/wishlist/removing/" + email + "/" + idnumber)
       .then((response) => {
         console.log(response);
-        window.location.reload();
       })
       .catch((error) => {
         console.log(error);

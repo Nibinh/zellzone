@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Register.css";
 import Headertwo from "./Headertwo";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Alert } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
@@ -16,7 +16,7 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [adress, setAdress] = useState("");
   const [image, setImage] = useState();
-
+  const [alert, setAlert] = useState(false);
   const {
     register,
     handleSubmit,
@@ -60,15 +60,17 @@ function Register() {
         },
       })
       .then((response) => {
-        alert(response.data);
-        console.log("1", response.data);
-        location("/login");
+        setAlert(true);
+        setTimeout(() => {
+          setAlert(false);
+          location("/login");
+        }, 1800);
       })
       .catch((error) => {
         console.log("2", error);
         if (error.response) {
           alert(error.response.data);
-          console.log("3", error.response.data);
+
           window.location.reload();
         } else if (error.request) {
           console.log("4", error.request);
@@ -81,6 +83,13 @@ function Register() {
   return (
     <div>
       <Headertwo />
+      {alert && (
+        <div className="text-center">
+          <Button variant="green">
+            <Alert variant="success">Account Created</Alert>
+          </Button>
+        </div>
+      )}
       <div className="mt-5 mb-5">
         <Row>
           <Col className="cc">
