@@ -50,7 +50,7 @@
     transition: 1s;
     color:rgb(35, 32, 32);
     font-size: 20px;
-    background-image: url('D:\my computer folders\luminar\my project\zellzone\public\images\loginimage.jpg');
+    /* background-image: url('D:\my computer folders\luminar\my project\zellzone\public\images\loginimage.jpg'); */
     background-size: cover;
     background-position: 40%;
     background-repeat: no-repeat;
